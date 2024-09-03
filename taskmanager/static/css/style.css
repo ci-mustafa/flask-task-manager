@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  /* colors  */
+.dark-gray {
+    background-color: #1a1a1a; /* Dark Gray */
+}
+.neon-green-text {
+    color: #39ff14; /* Neon Green */
+}
+
+.neon-orange-text {
+    color: #ff6f00; /* Neon Orange */
+}
