@@ -33,6 +33,18 @@ def edit_category(category_id):
     return render_template("update_category.html", category=category)
 
 
+@app.route("/delete_confirm/<int:category_id>")
+def delete_confirm(category_id):
+    category = Category.query.get_or_404(category_id)
+    return render_template("delete_confirmation.html", category=category)
+
+
+@app.route("/delete_category/<int:category_id>")
+def delete_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
+    db.session.commit()
+    return redirect(url_for("categories"))
 
 
 
