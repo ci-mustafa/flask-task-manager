@@ -34,10 +34,10 @@ def edit_category(category_id):
     return render_template("update_category.html", category=category)
 
 
-@app.route("/delete_confirm/<int:category_id>")
-def delete_confirm(category_id):
+@app.route("/category_delete_confirm/<int:category_id>")
+def category_delete_confirm(category_id):
     category = Category.query.get_or_404(category_id)
-    return render_template("delete_confirmation.html", category=category)
+    return render_template("category_delete_confirmation.html", category=category)
 
 
 @app.route("/delete_category/<int:category_id>")
@@ -78,6 +78,20 @@ def edit_task(task_id):
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("update_task.html", categories=categories, task=task)
+
+
+@app.route("/task_delete_confirm/<int:task_id>")
+def task_delete_confirm(task_id):
+    task = Task.query.get_or_404(task_id)
+    return render_template("task_delete_confirmation.html", task=task)
+
+
+@app.route("/delete_task/<int:task_id>")
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for("home"))
 
 
 
